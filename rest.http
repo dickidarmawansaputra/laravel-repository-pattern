@@ -1,0 +1,29 @@
+### Get all invoice
+GET http://127.0.0.1:8000/api/invoice
+
+### Get invoice by invoice number
+GET http://127.0.0.1:8000/api/invoice/{invoiceNumber}
+
+### Create invoice
+POST http://127.0.0.1:8000/api/invoice
+content-type: application/json
+
+{
+    "user_id": 1,
+    "amount": 1,
+    "note": "Catatan"
+}
+
+### Update invoice
+PUT http://127.0.0.1:8000/api/invoice
+content-type: application/json
+
+{
+    "invoice_number": "INV-22623229",
+    "user_id": 1,
+    "amount": 1,
+    "note": "Catatan Updated"
+}
+
+### Delete invoice
+DELETE http://127.0.0.1:8000/api/invoice/{invoiceNumber}
