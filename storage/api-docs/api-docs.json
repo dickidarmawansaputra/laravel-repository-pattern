@@ -1,0 +1,206 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Laravel Repository Pattern",
+        "description": "Implementation Repository Pattern in Laravel",
+        "contact": {
+            "email": "dickidarmawansaputra@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0",
+        "x-logo": {
+            "url": "https://via.placeholder.com/190x90.png?text=L5-Swagger"
+        }
+    },
+    "paths": {
+        "/api/invoice": {
+            "get": {
+                "tags": [
+                    "Invoice"
+                ],
+                "summary": "Get list of invoice",
+                "description": "Returns list of invoice",
+                "operationId": "index",
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Invoice"
+                ],
+                "summary": "Update invoice",
+                "description": "Returns invoice updated",
+                "operationId": "update",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "invoice_number",
+                                    "user_id",
+                                    "amount"
+                                ],
+                                "properties": {
+                                    "invoice_number": {
+                                        "type": "string"
+                                    },
+                                    "user_id": {
+                                        "type": "integer"
+                                    },
+                                    "amount": {
+                                        "type": "integer"
+                                    },
+                                    "note": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "invoice_number": "INV-2023",
+                                    "user_id": 1,
+                                    "amount": 1,
+                                    "note": "catatan"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Invoice"
+                ],
+                "summary": "Create new invoice",
+                "description": "Returns invoice created",
+                "operationId": "store",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "user_id",
+                                    "amount"
+                                ],
+                                "properties": {
+                                    "user_id": {
+                                        "type": "integer"
+                                    },
+                                    "amount": {
+                                        "type": "integer"
+                                    },
+                                    "note": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "user_id": 1,
+                                    "amount": 1,
+                                    "note": "catatan"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/api/invoice/{invoiceNumber}": {
+            "get": {
+                "tags": [
+                    "Invoice"
+                ],
+                "summary": "Get invoice details",
+                "description": "Returns invoice details",
+                "operationId": "show",
+                "parameters": [
+                    {
+                        "name": "invoiceNumber",
+                        "in": "path",
+                        "description": "Invoice Number",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Invoice"
+                ],
+                "summary": "Delete invoice",
+                "description": "Delete invoice",
+                "operationId": "destroy",
+                "parameters": [
+                    {
+                        "name": "invoiceNumber",
+                        "in": "path",
+                        "description": "Invoice Number",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        }
+    }
+}
