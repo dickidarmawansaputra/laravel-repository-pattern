@@ -18,9 +18,9 @@ class InvoiceFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::all()->random()->id,
+            'user_id' => User::inRandomOrder()->first()->id,
             'invoice_number' => 'INV-'.$this->faker->randomNumber(),
-            'amount' => $this->faker->randomNumber(),
+            'amount' => $this->faker->randomDigit(),
             'note' => $this->faker->sentence()
         ];
     }
